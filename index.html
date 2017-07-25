@@ -1,0 +1,310 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Network Science & Biodiversity</title>
+
+		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+		<link rel="stylesheet" href="css/theme/custom.css">
+		
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+			
+				<!-- slide 0: front-->
+				<section>
+						<div class="col-xs-2"></div>
+						<div class="col-xs-2"><img src="media/lncc.png" width=200></div>
+						<div class="col-xs-2"><img src="media/netsci.png" width=120></div>
+						<div class="col-xs-12">
+							<h2>Modelagem de redes de espécies e coletores</h2>
+							<h3>Caracterização e perspectivas de aplicação</h3>
+							<br/>
+							<h5>Pedro Correia de Siracusa<br/><small>pedrocs @ lncc.br</small></h5>
+						</div>
+				</section>
+
+				<!-- slide 1: context -->
+				<section>
+
+					<section class="text-left">
+						<h4><em>Contextualização</em></h4>
+						<h2>Modelagem de Distribuição de Espécies</h2>
+						<hr/>
+						<h3>Objetivos</h3>
+						<ul class="text-left" style="padding-left: 1.5em;">
+							<li>Identificar fatores ambientais relevantes para o estabelecimento de espécies no meio ambiente;</li>
+							<li>Projetar mapas de distribuição provável para espécies;</li>
+							<li>Fornecer suporte à tomada de decisões em gestão ambiental;</li>
+						</ul>	
+					</section>
+
+					<section class="text-left">
+						<h3 class="text-left">Desafios</h3>
+						<p class="text-left">Dados de de ocorrência de Espécies</p>
+						<ul class="text-left" style="padding-left: 1.5em;">
+							<li>Natureza observacional e majoritariamente oportunística;</li>
+							<li>Crescente volume de dados de baixa qualidade;</li>
+							<li>Viés amostral espacial;</li>
+							<li>Viés amostral taxonômico/funcional;</li>
+						</ul>
+						<p class="text-left">Validação de dados</p>
+						<ul class="text-left" style="padding-left: 1.5em;">
+							<li>Mecanismo de controle de qualidade;</li>
+							<li>Busca por inconsistências nos dados;</li>
+							<li>Em alguns casos requer intervenção por especialistas;</li>
+						</ul>
+						
+						<h4 class="text-center fragment fade-up" style="margin-top:2em;">Como podemos facilitar o processo de validação?</h4>
+					</section>
+
+					<section>
+						<div class="col-xs-7">
+							<h3 class="text-left">Pipeline de enriquecimento de dados <br/>
+							<small>Em que contexto determinado registro de ocorrência foi obtido?</small>
+							</h3>
+
+							<p class="text-left">Modelos de Redes</p>
+							<ul>
+								<li>Estruturam dados tabulados;</li>
+								<li>Interações entre agentes são modeladas;</li>
+								<li>Padrões e processos emergem dos dados;</li>	
+								<li>Dimensões temporal e espacial;</li>
+							</ul>
+
+							<p class="text-left">Inferências</p>
+							<ul>
+							<li>Identificação de comunidades;</li>
+							<li>Perfilamento e classificação de entidades;</li>
+							<li>Contexto de obtenção dos registros;</li>
+							</ul>	
+							
+							<p class="text-left">Aplicações</p>
+							<ul>
+							<li>Suporte à validação de dados;</li>
+							<li>Caracterização de viés amostral;</li>
+							<li>Seleção de <em>Background Data</em> para SDM.</li>
+							</ul>	
+						</div>
+
+						<div class="col-xs-5">
+							<img src="media/networksci_ideas.png">
+						</div>
+					</section>
+				</section>
+
+
+				<!-- slide -->
+				<section>
+
+					<section>
+						<h4><em>Modelos de Redes</em></h4>
+						<h1>Redes de co-autoria<br/><small><em>Collectors co-working networks</em></small></h1>
+						
+						<ul>
+							<li>Modelam relações <span style="color: green; font-weight: bold;">coletor</span>
+								<span style="color: gray; font-size:.7em;">-[registra espécime com]-></span>
+								<span style="color: green; font-weight: bold;"> coletor</span>;
+							</li>
+							<li>Espécies não são representadas;</li>
+							<li>Coletores sem colaborações não são representados;</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Construção da Rede</h3>
+						<ul>
+							<li>Coletores representados como vértices;</li>
+							<li>Registros em co-autoria representados como arestas;</li>
+						</ul>
+						<img src="media/build_coworking_net.png">
+					</section>
+
+
+					<!-- species-collectors network -->
+					<section data-background-iframe="cw_network/index.html" class="stack">
+
+							<span data-fragment-index="0">
+								<h3 class="fragment fade-out" style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;" data-fragment-index="1">
+									Dataset do UB: Componente Gigante
+								</h3>
+							</span>
+
+							<span class="fragment fade-in" data-fragment-index="1">
+								<span class="fragment fade-out" style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;" data-fragment-index="2">
+									<h4>Perfis de coletores</h4>
+									<ul>
+										<li>Experiência;</li>
+										<li>Colaboratividade;</li>
+									</ul>
+								</span>
+							</span>
+
+							<span class="fragment fade-in" data-fragment-index="2">
+								<span class="fragment fade-out" style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;" data-fragment-index="3">
+									<h4>Comunidades: Quais os principais grupos de trabalho?</h4>
+									<ul>
+										<li>Alunos da pós-graduação;</li>
+										<li>Cursos de campo;</li>
+										<li>Grandes surveys;</li>
+										<li>Coletores exógenos;</li>
+									</ul>
+								</span>
+							</span>
+
+							<span class="fragment fade-in" data-fragment-index="3">
+								<span style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;" >
+									<h4>A investigar: Aspectos temporais e geográficos</h4>
+									<ul>
+										<li>Em que momentos grupos se formaram?</li>
+										<li>O perfil de coletores se modifica com o tempo?</li>
+										<li>Qual o itinerário dos coletores?</li>
+									</ul>
+								</span>
+							</span>
+					</section>
+
+					<section data-background-iframe="cw_network_2/index.html" class="stack">
+						<h3>Dataset do UB: Componentes desconectados</h3>
+						<ul>
+							<li>Trocas entre herbários?</li>
+							<li>Grafias inconsistentes?</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>E as espécies?</h3>
+						<h3><small>Como investigar o interesse dos coletores em grupos taxonômicos e funcionais?</small></h3>
+					</section>
+					
+				</section>
+
+				<section>
+					<section>
+						<h4><em>Modelos de Redes</em></h4>
+						<h1>Redes Espécies-coletores<br/><small><em>Species-collectors networks</em></small></h1>
+						
+						<ul>
+							<li>Modelam relações <span style="color: green; font-weight: bold;">coletor</span>
+								<span style="color: gray; font-size:.7em;">-[registra]-></span>
+								<span style="color: red; font-weight: bold;"> espécie</span>;
+							</li>
+							<li>Modelo bipartite $B=(S_{col}, S_{sp}, E)$;</li>
+							<li>Podem ser projetados sobre um dos grupos;</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Construção da Rede</h3>
+						<ul>
+							<li>Espécies(r) e coletores(b) como vértices;</li>
+							<li>Registros autor-espécie como arestas</li>
+						</ul>
+						<img src="media/sc_network_idea.png"/>
+					</section>
+
+					<section data-background-iframe="sc_network/index.html" class="stack">
+						<h3>Dataset do JBB: Rede espécies-coletores</h3>
+					</section>
+
+					<section>
+						<h3>Projeções Bipartite</h3>
+						<p>Permitem investigar relações indiretas no modelo</p>
+						<img src="media/bipartite.png"/>
+					</section>
+
+					<section data-background-iframe="sc_network_proj_sp/index.html" class="stack">
+						<h3>Projeção sobre o grupo de Espécies</h3>
+						<ul>
+							<li>Grupos taxonômicos/funcionais de interesse;</li>
+						</ul>
+					</section>
+					
+					<section data-background-iframe="sc_network_proj_col/index.html" class="stack">
+						<h3>Projeção sobre o grupo de Coletores</h3>
+						<ul>
+							<li>Coletores que compartilham interesse;</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Redes variantes no tempo</h3>	
+						<h3><small>Exemplo 1: Jimmy Ratter (<em>Royal Botanic Garden Edinburgh</em>)</small></h3>
+						<div class="col-md-6">
+							<video src="animations/n2_anim1_snapshot.mp4" controls data-autoplay loop></video>
+							<h5><small>Snapshot View (Visão Fotográfica)</small></h5>
+					  	</div>
+
+						<div class="col-md-6">
+						    <video src="animations/n2_anim1_overlapped.mp4" controls data-autoplay loop></video>
+							<h5><small>Overlapped View (Visão Acumulada)</small></h5>
+						</div>
+					</section>
+					<section>
+						<h3>Redes variantes no tempo</h3>	
+						<h3><small>Exemplo 2: Cássia Munhoz e alunos</small></h3>
+						<div class="col-md-6">
+							<video src="animations/n2_anim2_snapshot.mp4" controls data-autoplay loop></video>
+							<h5><small>Snapshot View (Visão Fotográfica)</small></h5>
+					  	</div>
+
+						<div class="col-md-6">
+						    <video src="animations/n2_anim2_overlapped.mp4" controls data-autoplay loop></video>
+							<h5><small>Overlapped View (Visão Acumulada)</small></h5>
+						</div>
+					</section>
+				</section>
+
+
+				<!-- slide -->
+				<section>
+					<h2>Obrigado!</h2>
+					<h3>Dicas? Sugestões?</h3>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				history: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/math/math.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+					// Zoom in and out with Ctrl+Alt+click
+					{ src:'plugin/zoom-js/zoom.js', async: true }
+				],
+				width: 1920,
+				height:1080
+			});
+		</script>
+	</body>
+</html>
